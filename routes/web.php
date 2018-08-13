@@ -16,18 +16,7 @@ Route::match(['get', 'post'], '/login', 'LoginController@login');
 Route::match(['get', 'post'], '/register', 'LoginController@register');
 Route::get('/logout', 'LoginController@logout');
 
-
-// Route::get('/logout', 'Auth\LoginController@logout');
-
-// Auth::routes();
-
 Route::group(['middleware' => ['auth']], function () {
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // });
-    // Route::get('/', function () {
-    //     return view('dashboard');
-    // });
     Route::get('/', 'DashboardController@dashboard');
     Route::match(['get', 'post'], '/farmings', 'FarmingController@index');
     Route::match(['get', 'post'], '/farmings/add', 'FarmingController@add');
@@ -44,9 +33,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::match(['get', 'post'], '/tractors/edit/{id}', 'TractorController@edit');
     Route::get('/tractors/delete/{id}', 'TractorController@delete');
 });
-
-
-
-// Route::get('/home', 'HomeController@index')->name('home');
 
 

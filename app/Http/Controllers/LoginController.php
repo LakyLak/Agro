@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Log;
 use Auth;
 use Session;
 use App\User;
@@ -15,15 +14,12 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        Log::info("LOGIN\n");
         if ($request->isMethod('post')) {
             $data = $request->input();
 
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
-                Log::info('success');
                 return redirect('/');
             } else {
-                Log::info('failure');
                 return redirect('/login')->with('flash_error_message', 'Invalid Email or Password');
             }
         }
@@ -76,43 +72,8 @@ class LoginController extends Controller
 
     public function logout()
     {
-        Log::info("LOGOUT\n");
         Auth::logout();
         Session::flush();
         return redirect('/login')->with('flash_success_message', 'You were log out');
-    }
-
-    public function dashboard()
-    {
-        // $firstSolution = $this->firstSolution(0, 1000000000, 1);
-
-        // echo '<pre>'; print_r($solution); die;
-
-
-        return view('dashboard');
-    }
-
-    public function firstSolution($x, $y, $d)
-    {
-        $count = 0;
-        for ($i = $x; $i < $y; $i += $d) {
-            // $i += $d;
-            // echo '<pre>'; print_r($i);
-            $count++;
-        }
-
-        return $count;
-    }
-
-    public function secondSolution($x, $y, $d)
-    {
-        $count = 0;
-        for ($i = $x; $i < $y; $i += $d) {
-            // $i += $d;
-            // echo '<pre>'; print_r($i);
-            $count++;
-        }
-
-        return $count;
     }
 }

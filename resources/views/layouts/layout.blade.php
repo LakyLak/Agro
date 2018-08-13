@@ -64,7 +64,6 @@
             </button>
           </div>
           <div class="modal-body">
-            {{-- <p>You are logged in as {{ Auth::user()->name }}.</p>  --}}
               Select "Logout" below if you are ready to end your current session.
           </div>
           <div class="modal-footer">
