@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
             return redirect('/home');
         } 
         else {
-            return redirect()->action('AccessController@login')->with('flash_success_message', 'Please login to access');
+            return redirect()->action('LoginController@login')->with('flash_success_message', 'Please login to access');
         }
 
         return $next($request);

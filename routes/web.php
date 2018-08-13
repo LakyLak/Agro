@@ -12,7 +12,7 @@
 |
 */
 
-Route::match(['get', 'post'], '/login', 'LoginController@login');
+Route::match(['get', 'post'], 'login', 'LoginController@login')->name('login');
 Route::match(['get', 'post'], '/register', 'LoginController@register');
 Route::get('/logout', 'LoginController@logout');
 
